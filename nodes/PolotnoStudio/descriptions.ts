@@ -82,19 +82,15 @@ export const operationProperties: INodeProperties[] = [
 	},
 ];
 
+// Template picker for the Render operations (pick a template to render from).
 export const templateLocator: INodeProperties = {
 	displayName: 'Template',
 	name: 'template',
 	type: 'resourceLocator',
 	default: { mode: 'list', value: '' },
 	required: true,
-	description: 'The template to use',
-	displayOptions: {
-		show: {
-			resource: ['image', 'video', 'template'],
-			operation: ['render', 'get'],
-		},
-	},
+	description: 'The template to render',
+	displayOptions: { show: { resource: ['image', 'video'], operation: ['render'] } },
 	modes: [
 		{
 			displayName: 'From List',
@@ -109,10 +105,54 @@ export const templateLocator: INodeProperties = {
 			validation: [
 				{
 					type: 'regex',
+					properties: { regex: '^tpl_[A-Za-z0-9]+$', errorMessage: 'Template IDs start with tpl_' },
+				},
+			],
+			placeholder: 'tpl_0123456789abcdef',
+		},
+		{
+			displayName: 'By URL',
+			name: 'url',
+			type: 'string',
+			extractValue: { type: 'regex', regex: '/v1/templates/(tpl_[A-Za-z0-9]+)' },
+			validation: [
+				{
+					type: 'regex',
 					properties: {
-						regex: '^tpl_[A-Za-z0-9]+$',
-						errorMessage: 'Template IDs start with tpl_',
+						regex: '.*/v1/templates/tpl_[A-Za-z0-9]+.*',
+						errorMessage: 'Not a valid Polotno Studio template URL',
 					},
+				},
+			],
+			placeholder: 'https://api.studio.polotno.com/v1/templates/tpl_…',
+		},
+	],
+};
+
+// Template picker for Template → Get (same param name, scoped to that op only).
+export const templateGetLocator: INodeProperties = {
+	displayName: 'Template',
+	name: 'template',
+	type: 'resourceLocator',
+	default: { mode: 'list', value: '' },
+	required: true,
+	description: 'The template to fetch',
+	displayOptions: { show: { resource: ['template'], operation: ['get'] } },
+	modes: [
+		{
+			displayName: 'From List',
+			name: 'list',
+			type: 'list',
+			typeOptions: { searchListMethod: 'searchTemplates', searchable: true },
+		},
+		{
+			displayName: 'By ID',
+			name: 'id',
+			type: 'string',
+			validation: [
+				{
+					type: 'regex',
+					properties: { regex: '^tpl_[A-Za-z0-9]+$', errorMessage: 'Template IDs start with tpl_' },
 				},
 			],
 			placeholder: 'tpl_0123456789abcdef',
