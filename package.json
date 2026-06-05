@@ -1,0 +1,62 @@
+{
+  "name": "n8n-nodes-polotno-studio",
+  "version": "0.1.0",
+  "description": "Render images and videos from Polotno Studio templates",
+  "license": "MIT",
+  "homepage": "https://github.com/polotno-project/n8n-nodes-polotno-studio#readme",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "polotno",
+    "polotno-studio",
+    "image-generation",
+    "video-generation",
+    "render"
+  ],
+  "author": {
+    "name": "Nikita Gankin",
+    "email": "gankin.n24@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/polotno-project/n8n-nodes-polotno-studio.git"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "gen:types": "openapi-typescript openapi/polotno-studio.yaml -o nodes/shared/types/api.ts",
+    "release": "n8n-node release",
+    "prepublishOnly": "n8n-node prerelease"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": false,
+    "credentials": [
+      "dist/credentials/PolotnoStudioApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/PolotnoStudio/PolotnoStudio.node.js",
+      "dist/nodes/PolotnoStudioTrigger/PolotnoStudioTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "*",
+    "eslint": "9.29.0",
+    "openapi-typescript": "^7.13.0",
+    "prettier": "3.6.2",
+    "release-it": "^19.0.4",
+    "typescript": "5.9.2",
+    "vitest": "^4.1.8"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
