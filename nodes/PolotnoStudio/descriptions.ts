@@ -23,6 +23,12 @@ export const operationProperties: INodeProperties[] = [
 		displayOptions: { show: { resource: ['image'] } },
 		options: [
 			{
+				name: 'Get',
+				value: 'get',
+				description: 'Get an image render by ID',
+				action: 'Get an image',
+			},
+			{
 				name: 'Render',
 				value: 'render',
 				description: 'Render an image from a template',
@@ -38,6 +44,12 @@ export const operationProperties: INodeProperties[] = [
 		default: 'render',
 		displayOptions: { show: { resource: ['video'] } },
 		options: [
+			{
+				name: 'Get',
+				value: 'get',
+				description: 'Get a video render by ID',
+				action: 'Get a video',
+			},
 			{
 				name: 'Render',
 				value: 'render',
@@ -122,6 +134,18 @@ export const templateLocator: INodeProperties = {
 			placeholder: 'https://api.studio.polotno.com/v1/templates/tpl_…',
 		},
 	],
+};
+
+export const renderIdField: INodeProperties = {
+	displayName: 'Render ID',
+	name: 'renderId',
+	type: 'string',
+	required: true,
+	default: '',
+	placeholder: 'img_0123456789abcdef',
+	displayOptions: { show: { resource: ['image', 'video'], operation: ['get'] } },
+	description:
+		'ID of the render to fetch (img_… for an image, vid_… for a video) — e.g. from a previous Render node or a webhook',
 };
 
 export const fieldsMapper: INodeProperties = {

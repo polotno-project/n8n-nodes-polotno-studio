@@ -11,6 +11,7 @@ Design + plan live in the platform repo: `docs/superpowers/plans/2026-06-05-n8n-
   - Template picker = `resourceLocator` (list search by name / ID / URL).
   - Dynamic fields = `resourceMapper` (`getTemplateFields`) reading the selected template.
   - Image & Video **Render** wait-for-completion by default (images use `?sync=true` then poll; videos poll via `sleep`).
+  - Image & Video **Get** — fetch a render by id (`img_…`/`vid_…`); closes the async loop (Render with wait off → get the result later, or after a webhook / wait-timeout).
   - Template Get / Get Many (with name/tag/archived filters, returnAll + limit).
 - **Trigger node** `Polotno Studio Trigger`: webhook lifecycle (create/checkExists/delete) + HMAC signature verify.
 - **Types** generated from the vendored OpenAPI spec (`openapi/polotno-studio.yaml` → `nodes/shared/types/api.ts` via `npm run gen:types`). `DynamicField`/`DynamicFieldInput` derived from `DynamicFields`/`ImageCreate` (they're inlined, not standalone components).

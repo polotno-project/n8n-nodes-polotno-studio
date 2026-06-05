@@ -50,6 +50,14 @@ plus **FPS** and **Duration**. Video renders are billed as `fps × duration`
 credits and can take longer — for long videos, turn **Wait for Completion** off
 and use the **Polotno Studio Trigger** instead.
 
+### Image / Video → Get
+
+Fetches an existing render by its ID (`img_…` / `vid_…`) and returns its current
+state, including `image_url` / `video_url` once `status` is `completed`. Use this
+to retrieve a result from an **async** render (Render with *Wait for Completion*
+off, which returns only an `id`), to re-fetch what a webhook referenced, or to
+re-check a render that exceeded the wait window.
+
 ### Template → Get / Get Many
 
 List templates in your project (with optional **Name**, **Tag**, and archived

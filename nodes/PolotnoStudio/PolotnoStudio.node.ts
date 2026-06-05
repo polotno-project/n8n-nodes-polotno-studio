@@ -17,6 +17,7 @@ import {
 	imageRenderFields,
 	operationProperties,
 	renderCommonFields,
+	renderIdField,
 	resourceProperty,
 	templateListFields,
 	templateLocator,
@@ -58,6 +59,7 @@ export class PolotnoStudio implements INodeType {
 			resourceProperty,
 			...operationProperties,
 			templateLocator,
+			renderIdField,
 			fieldsMapper,
 			...imageRenderFields,
 			...videoRenderFields,
@@ -114,6 +116,11 @@ export class PolotnoStudio implements INodeType {
 							}
 						}
 					}
+				} else if (operation === 'get') {
+					const kind = resource === 'video' ? 'videos' : 'images';
+					const renderId = this.getNodeParameter('renderId', i) as string;
+					const result = await polotnoApiRequest(this, 'GET', `/v1/${kind}/${renderId}`);
+					returnData.push({ json: result, pairedItem: { item: i } });
 				} else {
 					const kind = resource === 'video' ? 'videos' : 'images';
 					const templateId = this.getNodeParameter('template', i, '', {
