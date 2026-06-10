@@ -22,5 +22,5 @@
 		"outDir": "./dist/"
 	},
 	"include": ["credentials/**/*", "nodes/**/*", "nodes/**/*.json", "package.json"],
-	"exclude": ["**/*.test.ts", "node_modules", "dist"]
+	"exclude": ["**/*.test.ts", "**/*.test.mts", "node_modules", "dist"]
 }
