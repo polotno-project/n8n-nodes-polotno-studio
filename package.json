@@ -26,7 +26,7 @@
     "lint:fix": "n8n-node lint --fix",
     "test": "vitest run",
     "test:watch": "vitest",
-    "gen:types": "openapi-typescript openapi/polotno-studio.yaml -o nodes/shared/types/api.ts",
+    "gen:types": "openapi-typescript https://api-development-b7c0.up.railway.app/openapi.json -o nodes/shared/types/api.ts",
     "release": "n8n-node release",
     "prepublishOnly": "n8n-node prerelease"
   },

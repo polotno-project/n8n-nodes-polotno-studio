@@ -1,7 +1,7 @@
 // Narrow, hand-picked re-exports of the generated OpenAPI types. The full
-// generated file (`./types/api.ts`) is produced by `npm run gen:types` from
-// the vendored spec (`openapi/polotno-studio.yaml`) — the single source of
-// truth for the wire contract.
+// generated file (`./types/api.ts`) is produced by `npm run gen:types`, which
+// fetches the live Polotno Studio OpenAPI spec — the single source of truth
+// for the wire contract.
 import type { components } from './types/api';
 
 export type Template = components['schemas']['Template'];

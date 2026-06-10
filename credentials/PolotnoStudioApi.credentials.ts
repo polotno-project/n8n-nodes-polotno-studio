@@ -13,7 +13,7 @@ export class PolotnoStudioApi implements ICredentialType {
 
 	displayName = 'Polotno Studio API';
 
-	documentationUrl = 'https://docs.studio.polotno.com';
+	documentationUrl = 'https://polotno.com/docs/overview';
 
 	icon: Icon = { light: 'file:polotno.svg', dark: 'file:polotno.dark.svg' };
 
@@ -26,7 +26,7 @@ export class PolotnoStudioApi implements ICredentialType {
 			default: '',
 			required: true,
 			description:
-				'Project API key from Polotno Studio → API Keys (starts with key_live_ or key_test_)',
+				'Project API key from Polotno Studio. In the editor, open the project selector → Manage projects to find it (starts with key_live_).',
 		},
 		{
 			displayName: 'Environment',

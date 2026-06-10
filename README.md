@@ -19,8 +19,10 @@ and use the package name `n8n-nodes-polotno-studio`.
 
 ## Credentials
 
-You need a **project API key** from Polotno Studio (Dashboard → API Keys). Keys
-start with `key_live_` (production) or `key_test_` (testing).
+You need a **project API key** from Polotno Studio. To find it, sign in to
+[Polotno Studio](https://studio.polotno.com), open the editor, open the project
+selector, click **Manage projects**, and copy the API key for your project.
+Keys start with `key_live_`.
 
 Create a **Polotno Studio API** credential and paste the key. Leave the
 environment as **Production**, or choose **Custom** and enter a base URL to point
@@ -95,7 +97,7 @@ Requires n8n 1.x. Tested against current n8n community-node tooling
 
 ## Resources
 
-- [Polotno Studio API documentation](https://docs.studio.polotno.com)
+- [Polotno Studio API documentation](https://polotno.com/docs/overview)
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
 
 ## License
