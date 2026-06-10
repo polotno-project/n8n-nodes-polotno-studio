@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-polotno-studio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Render images and videos from Polotno Studio templates",
   "license": "MIT",
   "homepage": "https://github.com/polotno-project/n8n-nodes-polotno-studio#readme",
@@ -13,7 +13,10 @@
     "video-generation",
     "render"
   ],
-  "author": { "name": "Nikita Gankin", "email": "gankin.n24@gmail.com" },
+  "author": {
+    "name": "Nikita Gankin",
+    "email": "gankin.n24@gmail.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/polotno-project/n8n-nodes-polotno-studio.git"
@@ -30,11 +33,15 @@
     "release": "n8n-node release",
     "prepublishOnly": "n8n-node prerelease"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "n8n": {
     "n8nNodesApiVersion": 1,
     "strict": true,
-    "credentials": ["dist/credentials/PolotnoStudioApi.credentials.js"],
+    "credentials": [
+      "dist/credentials/PolotnoStudioApi.credentials.js"
+    ],
     "nodes": [
       "dist/nodes/PolotnoStudio/PolotnoStudio.node.js",
       "dist/nodes/PolotnoStudioTrigger/PolotnoStudioTrigger.node.js"
@@ -49,5 +56,7 @@
     "typescript": "5.9.2",
     "vitest": "^4.1.8"
   },
-  "peerDependencies": { "n8n-workflow": "*" }
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
 }
