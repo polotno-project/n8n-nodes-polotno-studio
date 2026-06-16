@@ -44,9 +44,9 @@ export class PolotnoStudioApi implements ICredentialType {
 			name: 'baseUrl',
 			type: 'string',
 			default: '',
-			placeholder: 'https://api.dev.studio.polotno.com',
+			placeholder: 'https://api.studio.polotno.com',
 			displayOptions: { show: { environment: ['custom'] } },
-			description: 'Base URL of your Polotno Studio API (dev/QA or self-hosted)',
+			description: 'Override the Polotno Studio API base URL',
 		},
 	];
 

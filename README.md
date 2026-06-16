@@ -24,10 +24,8 @@ You need a **project API key** from Polotno Studio. To find it, sign in to
 selector, click **Manage projects**, and copy the API key for your project.
 Keys start with `key_live_`.
 
-Create a **Polotno Studio API** credential and paste the key. Leave the
-environment as **Production**, or choose **Custom** and enter a base URL to point
-at a dev/QA or self-hosted instance. n8n validates the key when you save the
-credential.
+Create a **Polotno Studio API** credential and paste the key. n8n validates the
+key when you save the credential.
 
 ## Operations
 
@@ -48,9 +46,10 @@ Renders an image from a template.
 ### Video → Render
 
 Renders a video (MP4/GIF) from a template. Same template + fields flow as images,
-plus **FPS** and **Duration**. Video renders are billed as `fps × duration`
-credits and can take longer — for long videos, turn **Wait for Completion** off
-and use the **Polotno Studio Trigger** instead.
+plus **FPS** and **Duration**. Video renders are billed as `ceil(duration)`
+credits (1 per second; FPS does not affect cost) and can take longer — for long
+videos, turn **Wait for Completion** off and use the **Polotno Studio Trigger**
+instead.
 
 ### Image / Video → Get
 

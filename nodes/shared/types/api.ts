@@ -85,7 +85,7 @@ export interface paths {
         put?: never;
         /**
          * Create an image render
-         * @description Async by default (returns 202). Pass `?sync=true` to wait up to 30s for the render to complete.
+         * @description Cost = 1 credit, or 3 credits for a PDF render (`format=pdf` or `render_pdf=true`) or a hi-res output above 3000×3000 px (after `pixel_ratio`). Async by default (returns 202). Pass `?sync=true` to wait up to 30s for the render to complete.
          */
         post: operations["createImage"];
         delete?: never;
@@ -121,7 +121,7 @@ export interface paths {
         put?: never;
         /**
          * Create a video render
-         * @description Cost = `fps × duration_seconds` credits. Async only — completion delivered via webhook subscription.
+         * @description Cost = `ceil(duration_seconds)` credits (1 per second; fps does not affect cost). Async only — completion delivered via webhook subscription.
          */
         post: operations["createVideo"];
         delete?: never;

@@ -12,7 +12,7 @@ type RequestContext = IExecuteFunctions | ILoadOptionsFunctions | IHookFunctions
 
 /**
  * Resolves the API base URL from the credential. Defaults to production;
- * a `custom` environment lets users point at a dev/QA or self-hosted instance.
+ * a `custom` environment lets users override the base URL.
  */
 export function resolveBaseUrl(credentials: IDataObject): string {
 	if (
