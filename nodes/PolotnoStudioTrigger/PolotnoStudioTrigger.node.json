@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-polotno-studio.polotnoStudioTrigger",
+	"node": "@polotno/n8n-nodes-polotno-studio.polotnoStudioTrigger",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Marketing", "Utility"],

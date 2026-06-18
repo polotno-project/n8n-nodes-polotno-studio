@@ -1,4 +1,4 @@
-# n8n-nodes-polotno-studio
+# @polotno/n8n-nodes-polotno-studio
 
 This is an n8n community node. It lets you render images and videos from your
 [Polotno Studio](https://studio.polotno.com) templates in your n8n workflows.
@@ -15,7 +15,7 @@ completes.
 ## Installation
 
 Follow the [community nodes installation guide](https://docs.n8n.io/integrations/community-nodes/installation/)
-and use the package name `n8n-nodes-polotno-studio`.
+and use the package name `@polotno/n8n-nodes-polotno-studio`.
 
 ## Credentials
 

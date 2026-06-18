@@ -1,6 +1,6 @@
 {
-  "name": "n8n-nodes-polotno-studio",
-  "version": "0.1.2",
+  "name": "@polotno/n8n-nodes-polotno-studio",
+  "version": "0.2.0",
   "description": "Render images and videos from Polotno Studio templates",
   "license": "MIT",
   "homepage": "https://github.com/polotno-project/n8n-nodes-polotno-studio#readme",
