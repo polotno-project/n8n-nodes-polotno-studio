@@ -1,7 +1,7 @@
 # @polotno/n8n-nodes-polotno-studio
 
 This is an n8n community node. It lets you render images and videos from your
-[Polotno Studio](https://automation.studio.polotno.com) templates in your n8n workflows.
+[Polotno Studio](https://polotno.com/studio) templates in your n8n workflows.
 
 Polotno Studio is a content-automation platform that turns design templates into
 on-brand images and videos via a simple API. This package adds a node to fill a
@@ -20,7 +20,7 @@ and use the package name `@polotno/n8n-nodes-polotno-studio`.
 ## Credentials
 
 You need a **project API key** from Polotno Studio. To find it, sign in to
-[Polotno Studio](https://automation.studio.polotno.com), open the editor, open the project
+[Polotno Studio](https://polotno.com/studio), open the editor, open the project
 selector, click **Manage projects**, and copy the API key for your project.
 Keys start with `key_live_`.
 
