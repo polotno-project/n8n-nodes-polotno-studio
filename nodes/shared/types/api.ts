@@ -85,7 +85,7 @@ export interface paths {
         put?: never;
         /**
          * Create an image render
-         * @description Cost = 1 credit, or 3 credits for a PDF render (`format=pdf` or `render_pdf=true`) or a hi-res output above 3000×3000 px (after `pixel_ratio`). Async by default (returns 202). Pass `?sync=true` to wait up to 30s for the render to complete.
+         * @description Cost = 1 credit, or 3 credits for a PDF render (`format=pdf`) or a hi-res output above 3000×3000 px (after `pixel_ratio`). Async by default (returns 202). Pass `?sync=true` to wait up to 30s for the render to complete.
          */
         post: operations["createImage"];
         delete?: never;
@@ -406,13 +406,9 @@ export interface components {
             format: string;
             transparent: boolean;
             pixel_ratio: string;
-            render_jpeg: boolean;
-            render_pdf: boolean;
             width: number;
             height: number;
             image_url: string | null;
-            image_url_jpg: string | null;
-            pdf_url: string | null;
             webhook_url: string | null;
             metadata?: unknown;
             error?: unknown;
@@ -456,10 +452,6 @@ export interface components {
             transparent: boolean;
             /** @default 1 */
             pixel_ratio: number;
-            /** @default false */
-            render_jpeg: boolean;
-            /** @default false */
-            render_pdf: boolean;
             /** Format: uri */
             webhook_url?: string;
             /** @default {} */
@@ -480,13 +472,9 @@ export interface components {
                 format: string;
                 transparent: boolean;
                 pixel_ratio: string;
-                render_jpeg: boolean;
-                render_pdf: boolean;
                 width: number;
                 height: number;
                 image_url: string | null;
-                image_url_jpg: string | null;
-                pdf_url: string | null;
                 webhook_url: string | null;
                 metadata?: unknown;
                 error?: unknown;
@@ -715,8 +703,6 @@ export interface components {
                 status: "pending" | "processing" | "completed" | "failed" | "partial";
                 dynamic_fields?: unknown;
                 image_url: string | null;
-                image_url_jpg: string | null;
-                pdf_url: string | null;
                 metadata?: unknown;
                 error?: unknown;
                 /** Format: date-time */
