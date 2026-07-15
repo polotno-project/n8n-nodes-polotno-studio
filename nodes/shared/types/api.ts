@@ -280,6 +280,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Identify the authenticated project and account
+         * @description Returns the project the API key belongs to and the owning account email. Intended as the credential test + connection label source for Zapier/Make/n8n.
+         */
+        get: operations["getMe"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -300,6 +320,8 @@ export interface components {
             /** @enum {string} */
             status: "ok";
             timestamp: string;
+            version: string;
+            commit: string | null;
             /** @enum {string} */
             db: "ok" | "error";
         };
@@ -334,6 +356,8 @@ export interface components {
                         [key: string]: unknown;
                     };
                 }[];
+                /** @enum {string} */
+                text_overflow: "shrink" | "grow" | "truncate";
                 tags: string[];
                 archived: boolean;
                 self_url: string;
@@ -374,6 +398,8 @@ export interface components {
                     [key: string]: unknown;
                 };
             }[];
+            /** @enum {string} */
+            text_overflow: "shrink" | "grow" | "truncate";
             tags: string[];
             archived: boolean;
             self_url: string;
@@ -403,6 +429,8 @@ export interface components {
             template_id: string;
             project_id: string;
             dynamic_fields?: unknown;
+            /** @enum {string} */
+            text_overflow: "shrink" | "grow" | "truncate";
             format: string;
             transparent: boolean;
             pixel_ratio: string;
@@ -443,6 +471,12 @@ export interface components {
                 font_size?: number;
                 visible?: boolean;
             }[];
+            /** @description Flat alternative to `dynamic_fields` for no-code tools (Make/Zapier/n8n) that can only send a flat key/value map. Keys use the format `fields__{name}__{suffix}`, where {suffix} is one of: text, image_url, video_url, color, font_family, font_size, visible. Example: { "fields__headline__text": "Sale!", "fields__logo__image_url": "https://cdn.example.com/l.png" }. Reassembled into `dynamic_fields` server-side; keys that do not match this format are ignored. May be sent alongside `dynamic_fields`: flat entries are appended after the array, so for a field named in both, the flat value takes precedence on any overlapping property. Never stored or returned. */
+            dynamic_fields_flat?: {
+                [key: string]: unknown;
+            };
+            /** @enum {string} */
+            text_overflow?: "shrink" | "grow" | "truncate";
             /**
              * @default png
              * @enum {string}
@@ -469,6 +503,8 @@ export interface components {
                 template_id: string;
                 project_id: string;
                 dynamic_fields?: unknown;
+                /** @enum {string} */
+                text_overflow: "shrink" | "grow" | "truncate";
                 format: string;
                 transparent: boolean;
                 pixel_ratio: string;
@@ -506,6 +542,8 @@ export interface components {
             template_id: string;
             project_id: string;
             dynamic_fields?: unknown;
+            /** @enum {string} */
+            text_overflow: "shrink" | "grow" | "truncate";
             format: string;
             fps: number;
             duration_seconds: string;
@@ -549,6 +587,12 @@ export interface components {
                 font_size?: number;
                 visible?: boolean;
             }[];
+            /** @description Flat alternative to `dynamic_fields` for no-code tools (Make/Zapier/n8n) that can only send a flat key/value map. Keys use the format `fields__{name}__{suffix}`, where {suffix} is one of: text, image_url, video_url, color, font_family, font_size, visible. Example: { "fields__headline__text": "Sale!", "fields__logo__image_url": "https://cdn.example.com/l.png" }. Reassembled into `dynamic_fields` server-side; keys that do not match this format are ignored. May be sent alongside `dynamic_fields`: flat entries are appended after the array, so for a field named in both, the flat value takes precedence on any overlapping property. Never stored or returned. */
+            dynamic_fields_flat?: {
+                [key: string]: unknown;
+            };
+            /** @enum {string} */
+            text_overflow?: "shrink" | "grow" | "truncate";
             /**
              * @default mp4
              * @enum {string}
@@ -573,6 +617,8 @@ export interface components {
                 template_id: string;
                 project_id: string;
                 dynamic_fields?: unknown;
+                /** @enum {string} */
+                text_overflow: "shrink" | "grow" | "truncate";
                 format: string;
                 fps: number;
                 duration_seconds: string;
@@ -865,6 +911,15 @@ export interface components {
             /** Format: date-time */
             next_retry_at: string | null;
         };
+        Me: {
+            /** @enum {string} */
+            object: "me";
+            project_id: string;
+            project_name: string;
+            /** @enum {string} */
+            mode: "live" | "test";
+            account_email: string;
+        };
     };
     responses: {
         /** @description Malformed request */
@@ -962,6 +1017,7 @@ export interface operations {
                 tag?: string;
                 archived?: boolean | null;
                 created_after?: string;
+                omit_design?: boolean | null;
             };
             header?: never;
             path?: never;
@@ -1638,6 +1694,32 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Delivery"];
+                };
+            };
+            400: components["responses"]["BadRequest"];
+            401: components["responses"]["Unauthorized"];
+            404: components["responses"]["NotFound"];
+            409: components["responses"]["Conflict"];
+            422: components["responses"]["ValidationError"];
+            429: components["responses"]["RateLimited"];
+        };
+    };
+    getMe: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Me"];
                 };
             };
             400: components["responses"]["BadRequest"];
